@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17
 TARGET = app
-SOURCES = main.cpp message.cpp
+SOURCES = main.cpp message.cpp user.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 
@@ -14,7 +14,7 @@ $(TARGET): $(OBJECTS)
 
 
 clean:
-	rm -f $(OBJECTS) $(TARGET) new_file
+	rm -f $(OBJECTS) $(TARGET) users messages
 
 
 .PHONY: clean

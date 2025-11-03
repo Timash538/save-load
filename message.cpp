@@ -26,7 +26,7 @@ void Message::saveMessage(std::string filename)
 	}
 	fs::path p = filename;
 	fs::permissions(p, fs::perms::owner_all, fs::perm_options::replace);
-	file << _text << "|" << _sender << "|" << _receiver << std::endl;
+	file << *this << std::endl;
 }
 
 std::vector<Message> Message::loadMessages(std::string filename)

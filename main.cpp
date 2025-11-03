@@ -1,4 +1,5 @@
 #include "message.h"
+#include "user.h"
 #include <vector>
 #include <iostream>
 #include <pwd.h>
@@ -18,12 +19,48 @@ int main()
 		return 1;
 	}
 
-	Message m;
-	m.saveMessage("new_file");
-	auto messages = Message::loadMessages("new_file");
-	for (auto msg : messages)
+	while(true)
 	{
-		std::cout << msg;
+		std::cout << "Enter 1 for save message, 2 for save User, 3 for show all messages, 4 for show all users. 0 - exit" << std::endl;
+		int choice;
+		std::cin >> choice;
+		switch (choice)
+		{
+			case 1:
+			{
+			Message m;
+			m.saveMessage("messages");
+			break;
+			}
+			case 2:
+			{
+			User u;
+			u.saveUser("users");
+			break;
+			}
+			case 3:
+			{
+			auto messages = Message::loadMessages("messages");
+			for (auto msg : messages)
+			{
+				std::cout << msg;
+			}
+			break;
+			}
+			case 4:
+			{
+			auto users = User::loadUsers("users");
+			for (auto usr : users)
+			{
+				std::cout << usr;
+			}
+			break;
+			}
+			case 0:
+			return 0;
+			default:
+			break;
+		}
 	}
 	return 0;
 }
