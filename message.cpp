@@ -24,6 +24,8 @@ void Message::saveMessage(std::string filename)
 		std::cout << "Couldn't open file\n";
 		return;
 	}
+	fs::path p = filename;
+	fs::permissions(p, fs::perms::owner_all, fs::perm_options::replace);
 	file << _text << "|" << _sender << "|" << _receiver << std::endl;
 }
 
